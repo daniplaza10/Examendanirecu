@@ -1,0 +1,53 @@
+package master;
+
+public class MatrixTest {
+
+    public void runTests() {
+        testDeterminantCalculation();
+    }
+
+    private void testDeterminantCalculation() {
+        
+        double[][] matrixData1 = {
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
+        };
+        Matrix matrix1 = new Matrix(matrixData1);
+        double determinant1 = matrix1.calculateDeterminant();
+        assertEqual(determinant1, 0);
+
+        
+        double[][] matrixData2 = {
+                {-2, 3, 5},
+                {1, -4, 2},
+                {3, -1, 6}
+        };
+        Matrix matrix2 = new Matrix(matrixData2);
+        double determinant2 = matrix2.calculateDeterminant();
+        assertEqual(determinant2, -48);
+
+        
+        double[][] matrixData3 = {
+                {1, 0, 0},
+                {0, 1, 0},
+                {0, 0, 1}
+        };
+        Matrix matrix3 = new Matrix(matrixData3);
+        double determinant3 = matrix3.calculateDeterminant();
+        assertEqual(determinant3, 1);
+    }
+
+    private void assertEqual(double actual, double expected) {
+        if (Math.abs(actual - expected) < 0.0001) {
+            System.out.println("Prueba exitosa");
+        } else {
+            System.out.println("Prueba fallida. Valor actual: " + actual + ", Valor esperado: " + expected);
+        }
+    }
+
+    public static void main(String[] args) {
+        MatrixTest testRunner = new MatrixTest();
+        testRunner.runTests();
+    }
+}
